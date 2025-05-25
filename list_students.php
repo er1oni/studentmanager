@@ -63,12 +63,30 @@ $result = $conn->query("SELECT id, name, subject, status FROM students");
         .actions button.delete {
             background-color: #e74c3c;
         }
+        /* Add New Student button styling */
+        .add-student-btn {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            background-color: #27ae60;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .add-student-btn:hover {
+            background-color: #219150;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h2>📋 Student List</h2>
+
+    <?php if ($isAdmin): ?>
+        <a href="add_student.php" class="add-student-btn">➕ Add New Student</a>
+    <?php endif; ?>
 
     <?php if ($result && $result->num_rows > 0): ?>
         <table>
