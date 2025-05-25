@@ -1,0 +1,185 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body and fonts */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container wrapper for main content */
+.container {
+    max-width: 960px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 0.08);
+}
+
+/* Navigation bar */
+nav {
+    background-color: #1e40af;
+    padding: 16px 40px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
+    font-weight: 600;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #3b82f6;
+}
+
+nav a.logout {
+    margin-left: auto;
+    background-color: #dc2626;
+    font-weight: 700;
+}
+
+nav a.logout:hover {
+    background-color: #b91c1c;
+}
+
+/* Header section */
+header {
+    background: #2563eb;
+    color: white;
+    padding: 20px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 0 0 12px 12px;
+}
+
+/* Headings */
+h1, h2, h3 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    flex-grow: 1;
+    padding: 10px 14px;
+    border: 1.8px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #2563eb;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1e40af;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+}
+
+th, td {
+    padding: 14px 20px;
+    text-align: left;
+    border-bottom: 1px solid #e0e7ff;
+}
+
+th {
+    background-color: #e0e7ff;
+    color: #1e3a8a;
+    font-weight: 700;
+}
+
+tr:hover {
+    background-color: #f0f4ff;
+}
+
+/* Inline form for editing in table */
+form.inline {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.inline input[type="text"],
+.inline select {
+    width: 120px;
+}
+
+/* Links */
+a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #777;
+    background: #f9fafb;
+}
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
