@@ -3,9 +3,8 @@ include 'init.php';       // starts session safely
 include 'auth_check.php'; // checks if logged in (except on login.php)
 include 'db.php';
 
-// Restrict access to admins only
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    // Redirect non-admin users to students list or show an error
+// Restrict access to admins only (assuming role 1 means admin)
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
     header("Location: list_students.php");
     exit;
 }
@@ -13,13 +12,22 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 include 'header.php'; // header and navbar
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $full_name = $conn->real_escape_string($_POST['full_name']);
-    $email     = $conn->real_escape_string($_POST['email']);
-    $course    = $conn->real_escape_string($_POST['course']);
+    $full_name = $_POST['full_name'] ?? '';
+    $email     = $_POST['email'] ?? '';
+    $course    = $_POST['course'] ?? '';
 
-    $conn->query("INSERT INTO students (full_name, email, course) VALUES ('$full_name', '$email', '$course')");
-    header("Location: list_students.php");
-    exit;
+    // Validate inputs (basic)
+    if ($full_name && $email && $course) {
+        $stmt = $conn->prepare("INSERT INTO students (full_name, email, course) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $full_name, $email, $course);
+        $stmt->execute();
+        $stmt->close();
+
+        header("Location: list_students.php");
+        exit;
+    } else {
+        echo "<p style='color:red;'>Please fill in all fields.</p>";
+    }
 }
 ?>
 
@@ -35,4 +43,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 <?php include 'footer.php'; ?>
-
